@@ -1,0 +1,117 @@
+﻿@model IEnumerable<EsmesCompany.Models.Subscription>
+
+@{
+    ViewBag.Title = "List";
+}
+
+<h2>List</h2>
+
+<p>
+    @Html.ActionLink("Yeni Kullanıcı Oluştur", "UyeEkle", "Home", new { @class = "btn btn-primary" }) |
+
+    @Html.ActionLink("Aidat Ekle", "SubscriptionAdd", "Home", new { @class = "btn btn-primary" }) |
+
+    @Html.ActionLink("Yıl Ekle", "YearAdd", "Home", new { @class = "btn btn-primary" }) <hr />
+</p>
+<table class="table table-bordered">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.User.Fullname)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Year.YearName)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Ocak)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Subat)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Mart)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Nisan)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Mayis)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Haziran)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Temmuz)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Agustos)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Eylul)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Ekim)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Kasim)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Aralik)
+        </th>
+        <th>Toplam</th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.User.Fullname)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Year.YearName)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Ocak)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Subat)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Mart)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Nisan)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Mayis)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Haziran)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Temmuz)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Agustos)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Eylul)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Ekim)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Kasim)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Aralik)
+        </td>
+        <td>@(@item.Ocak + @item.Subat + @item.Mart + @item.Nisan + @item.Mayis + @item.Haziran + @item.Temmuz + @item.Agustos + @item.Eylul + @item.Ekim + @item.Kasim + @item.Aralik)</td>
+        @*<td>
+            Html.ActionLink("Edit", "Edit", new { id=item.SubscriptionId }) |
+    @Html.ActionLink("Details", "Details", new { id=item.SubscriptionId }) |
+    @Html.ActionLink("Delete", "Delete", new { id=item.SubscriptionId })
+
+        </td>*@
+    </tr>
+}
+
+</table>
