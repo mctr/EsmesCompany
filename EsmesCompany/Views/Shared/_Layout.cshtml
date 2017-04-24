@@ -21,6 +21,9 @@
             </div>
             <div class="navbar-collapse collapse">
                 <ul class="nav navbar-nav">
+                    @if (Session["Username"] != null) { 
+                        <li class="pull-right">@Html.ActionLink("Logout", "Logout", "Admin", new { area = "" }, new { @class = "navbar-brand" })</li>
+                    }
                 </ul>
             </div>
         </div>

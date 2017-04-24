@@ -12,6 +12,7 @@
     @Html.ActionLink("Aidat Ekle", "SubscriptionAdd", "Home", new { @class = "btn btn-primary" }) |
 
     @Html.ActionLink("Yıl Ekle", "YearAdd", "Home", new { @class = "btn btn-primary" }) <hr />
+    <h1> adı:  @Session["Username"] ,  @Session["UserId"]</h1>
 </p>
 <table class="table table-bordered">
     <tr>
@@ -58,6 +59,7 @@
             @Html.DisplayNameFor(model => model.Aralik)
         </th>
         <th>Toplam</th>
+        <th></th>
     </tr>
 
 @foreach (var item in Model) {
@@ -105,12 +107,12 @@
             @Html.DisplayFor(modelItem => item.Aralik)
         </td>
         <td>@(@item.Ocak + @item.Subat + @item.Mart + @item.Nisan + @item.Mayis + @item.Haziran + @item.Temmuz + @item.Agustos + @item.Eylul + @item.Ekim + @item.Kasim + @item.Aralik)</td>
-        @*<td>
-            Html.ActionLink("Edit", "Edit", new { id=item.SubscriptionId }) |
-    @Html.ActionLink("Details", "Details", new { id=item.SubscriptionId }) |
-    @Html.ActionLink("Delete", "Delete", new { id=item.SubscriptionId })
+        <td>
+            @Html.ActionLink("Düzenle", "Edit/", new { id=item.SubscriptionId }) |
+            @Html.ActionLink("Details", "Edit/","Home" , new { id=item.SubscriptionId }) |
+            @Html.ActionLink("Delete", "Delete", new { id=item.SubscriptionId })
 
-        </td>*@
+        </td>
     </tr>
 }
 

@@ -1,0 +1,52 @@
+﻿@model EsmesCompany.Models.User  
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width" />
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <title>Sisteme Giriş | ESMES ŞİRKETİ</title>
+    <link href="~/Content/bootstrap.min.css" rel="stylesheet" />
+    <link href="~/Content/signin.css" rel="stylesheet" />
+</head>
+<body>
+
+    @using (Html.BeginForm("Login", "Admin", FormMethod.Post))
+    {
+        <div class="container">
+            @Html.AntiForgeryToken()
+            @Html.ValidationSummary(true)
+            <div class="form-signin">
+                <h1>E<small>yüp</small>S<small>inan</small>M<small>esut</small>E<small>ngin</small>S<small>inan</small></h1><hr />
+                @if (@ViewBag.Message != null)
+                {
+                    <div style="border: 1px solid red">
+                        @ViewBag.Message
+                    </div>
+                }
+                <h2 class="form-signin-heading text-center">Sisteme Giriş</h2>
+                <label for="inputEmail" class="sr-only"> </label>
+                <!--<input type="email" id="inputEmail" class="form-control" placeholder="Kullanıcı Adı" required autofocus>-->
+                @Html.TextBoxFor(a => a.Username, new { @class = "form-control", placeholder = "Kullanıcı Adı", required = "required" })
+                <label for="inputPassword" class="sr-only">Parola</label>
+                <!--<input type="password" id="inputPassword" class="form-control" placeholder="Şifre" required>-->
+                @Html.PasswordFor(a => a.Password, new { @class = "form-control", placeholder = "Parola", required = "required" })
+                <div class="checkbox">
+                    <label>
+                        <input type="checkbox" value="remember-me"> Beni Hatırla
+                    </label>
+                </div>
+                <button class="btn btn-lg btn-primary btn-block" type="submit">Giriş</button>
+            </div>
+
+        </div> <!-- /container -->
+    }
+</body>
+</html>

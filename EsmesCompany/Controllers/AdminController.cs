@@ -8,9 +8,8 @@ using System.Data.Entity;
 
 namespace EsmesCompany.Controllers
 {
-    public class HomeController : Controller
+    public class AdminController : Controller
     {
-
         private EsmesContext db = new EsmesContext();
 
         public ActionResult Index()
@@ -18,16 +17,50 @@ namespace EsmesCompany.Controllers
             return View();
         }
 
+        // GET: Admin
+        public ActionResult Login()
+        {
+            return View();
+        }
+
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public ActionResult Login(User user)
+        {
+            if (!ModelState.IsValid)
+            {
+                using ( EsmesContext db = new EsmesContext())
+                {
+                    var obj = db.Users.Where(a => a.Username.Equals(user.Username) && a.Password.Equals(user.Password)).FirstOrDefault();
+                    if (obj != null)
+                    {
+                        Session["UserId"] = obj.UserId.ToString();
+                        Session["Username"] = obj.Username.ToString();
+                        return RedirectToAction("List");
+                    }
+                }
+            }
+            return View(user);
+        }
+
         public ActionResult List()
         {
-            if (Session["UserId"] != null) { 
+            if (Session["UserId"] != null)
+            {
                 IEnumerable<Subscription> yeni = db.Subscriptions.ToList();
                 return View(yeni);
-            } else
-            {
-                //return RedirectToAction("Admin/Login");
-                return RedirectToRoute("AdminLogin");
             }
+            else
+            {
+                return RedirectToAction("Login");
+            }
+        }
+
+        public ActionResult Logout()
+        {
+            Session.Clear();
+            Session.Abandon();
+            return RedirectToAction("Login");
         }
 
         public ActionResult UyeEkle()
@@ -48,7 +81,7 @@ namespace EsmesCompany.Controllers
             {
                 return View();
             }
-            
+
         }
 
         public ActionResult SubscriptionAdd()
@@ -71,7 +104,7 @@ namespace EsmesCompany.Controllers
             {
                 return View();
             }
-            
+
         }
 
         public ActionResult YearAdd()
@@ -92,7 +125,7 @@ namespace EsmesCompany.Controllers
             {
                 return View();
             }
-             
+
         }
 
         public ActionResult Edit(int id)
@@ -100,7 +133,7 @@ namespace EsmesCompany.Controllers
             Subscription update = db.Subscriptions.Find(id);
             ViewBag.UserId = new SelectList(db.Users.Where(c => c.UserId == update.UserId), "UserId", "Fullname");
             ViewBag.YearId = new SelectList(db.Years.Where(c => c.YearId == update.YearId), "YearId", "YearName");
-            
+
             return View(update);
         }
 
