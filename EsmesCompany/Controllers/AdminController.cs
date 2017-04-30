@@ -5,6 +5,7 @@ using System.Web;
 using System.Web.Mvc;
 using EsmesCompany.Models;
 using System.Data.Entity;
+using EsmesCompany.Helper;
 
 namespace EsmesCompany.Controllers
 {
@@ -43,6 +44,7 @@ namespace EsmesCompany.Controllers
             return View(user);
         }
 
+       
         public ActionResult List()
         {
             if (Session["UserId"] != null)
@@ -63,11 +65,13 @@ namespace EsmesCompany.Controllers
             return RedirectToAction("Login");
         }
 
+        [CustomFilter]
         public ActionResult UyeEkle()
         {
             return View();
         }
 
+        [CustomFilter]
         [HttpPost]
         public ActionResult UyeEkle(User user)
         {
