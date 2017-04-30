@@ -1,0 +1,14 @@
+﻿
+@{
+    ViewBag.Title = "Anasayfa";
+    Layout = "~/Views/Shared/_Home.cshtml";
+}
+
+<div class="inner cover">
+    <h1 class="cover-heading">ESMES ŞİRKET</h1>
+    <p class="lead">Dostlukların, kardeşliklerin biraraya gelerek oluşturduğu dostluk şirketi. Önemli olan dostluklar baki kalsın..</p>
+    <p class="lead">
+        @Html.ActionLink("Esmes'in Yapıtaşları", "Hakkimizda", "Home", new { @class = "btn btn-lg btn-primary" })
+        <!--<a href="#" class="btn btn-lg btn-default">Esmes'in Yapıtaşları</a>-->
+    </p>
+</div>

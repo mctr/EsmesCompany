@@ -58,6 +58,7 @@ namespace EsmesCompany.Controllers
             }
         }
 
+        [CustomFilter]
         public ActionResult Logout()
         {
             Session.Clear();
@@ -88,6 +89,7 @@ namespace EsmesCompany.Controllers
 
         }
 
+        [CustomFilter]
         public ActionResult SubscriptionAdd()
         {
             ViewBag.UserId = new SelectList(db.Users, "UserId", "Fullname");
@@ -95,6 +97,7 @@ namespace EsmesCompany.Controllers
             return View();
         }
 
+        [CustomFilter]
         [HttpPost]
         public ActionResult SubscriptionAdd(Subscription sub)
         {
@@ -111,11 +114,13 @@ namespace EsmesCompany.Controllers
 
         }
 
+        [CustomFilter]
         public ActionResult YearAdd()
         {
             return View();
         }
 
+        [CustomFilter]
         [HttpPost]
         public ActionResult YearAdd(Year year)
         {
@@ -132,6 +137,7 @@ namespace EsmesCompany.Controllers
 
         }
 
+        [CustomFilter]
         public ActionResult Edit(int id)
         {
             Subscription update = db.Subscriptions.Find(id);
@@ -141,6 +147,7 @@ namespace EsmesCompany.Controllers
             return View(update);
         }
 
+        [CustomFilter]
         [HttpPost]
         public ActionResult Edit(Subscription subs)
         {

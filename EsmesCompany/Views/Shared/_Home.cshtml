@@ -1,0 +1,52 @@
+﻿<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>@ViewBag.Title - ESMES</title>
+        <link href="~/Content/Site.css" rel="stylesheet" type="text/css" />
+        <link href="~/Content/bootstrap.min.css" rel="stylesheet" type="text/css" />
+        <script src="~/Scripts/modernizr-2.6.2.js"></script>
+        <link href="~/Content/cover.css" rel="stylesheet" />
+    </head>
+<body style="background-image: url('../../Content/img/back.JPG'); background-repeat: no-repeat;background-size: cover;">
+    <div class="site-wrapper">
+
+        <div class="site-wrapper-inner">
+
+            <div class="cover-container">
+
+                <div class="masthead clearfix">
+                    <div class="inner">
+                        <h3 class="masthead-brand">ESMES</h3>
+                        <nav>
+                            <ul class="nav masthead-nav">
+                                <li class="active"><a href="#">ANASAYFA</a></li>
+                                <li>@Html.ActionLink("HAKKIMIZDA", "Hakkimizda", "Home")</li>
+                                <li><a href="#">İLETİŞİM</a></li>
+                                <li><a href="#">GİRİŞ</a></li>
+                            </ul>
+                        </nav>
+                    </div>
+                </div>
+
+                @RenderBody()
+
+                <div class="mastfoot">
+                    <div class="inner">
+                        <p>ESMES template for <a href="http://getbootstrap.com">Bootstrap</a>, by <a href="http://cittir.com">MesutCtr</a>.</p>
+                    </div>
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+
+
+
+    <script src="~/Scripts/jquery-1.10.2.min.js"></script>
+    <script src="~/Scripts/bootstrap.min.js"></script>
+</body>
+</html>
