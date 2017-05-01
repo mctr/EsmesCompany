@@ -7,7 +7,16 @@
         <link href="~/Content/Site.css" rel="stylesheet" type="text/css" />
         <link href="~/Content/bootstrap.min.css" rel="stylesheet" type="text/css" />
         <script src="~/Scripts/modernizr-2.6.2.js"></script>
+        <script src="~/Scripts/jquery-1.10.2.min.js"></script>
         <link href="~/Content/cover.css" rel="stylesheet" />
+        <script>
+            $(document).ready(function () {
+                $('ul li a').click(function () {
+                    $('li a').removeClass("active");
+                    $(this).addClass("active");
+                });
+            });
+        </script>
     </head>
 <body style="background-image: url('../../Content/img/back.JPG'); background-repeat: no-repeat;background-size: cover;">
     <div class="site-wrapper">
@@ -18,13 +27,13 @@
 
                 <div class="masthead clearfix">
                     <div class="inner">
-                        <h3 class="masthead-brand">ESMES</h3>
+                        <h2 class="masthead-brand">ESMES</h2>
                         <nav>
                             <ul class="nav masthead-nav">
-                                <li class="active"><a href="#">ANASAYFA</a></li>
+                                <li>@Html.ActionLink("ANASAYFA", "Index", "Home", new { @class="active"})</li>
                                 <li>@Html.ActionLink("HAKKIMIZDA", "Hakkimizda", "Home")</li>
                                 <li><a href="#">İLETİŞİM</a></li>
-                                <li><a href="#">GİRİŞ</a></li>
+                                <li>@Html.ActionLink("GİRİŞ", "Login", "Admin")</li>
                             </ul>
                         </nav>
                     </div>
