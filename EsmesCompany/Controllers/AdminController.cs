@@ -44,35 +44,29 @@ namespace EsmesCompany.Controllers
             return View(user);
         }
 
-       
+       [CustomFilter]
         public ActionResult List()
         {
-            if (Session["UserId"] != null)
-            {
                 IEnumerable<Subscription> yeni = db.Subscriptions.ToList();
                 return View(yeni);
-            }
-            else
-            {
-                return RedirectToAction("Login");
-            }
         }
 
         [CustomFilter]
         public ActionResult Logout()
-        {
-            Session.Clear();
-            Session.Abandon();
-            return RedirectToAction("Login");
+        { 
+                Session.Clear();
+                Session.Abandon();
+                return RedirectToAction("Login");
         }
 
         [CustomFilter]
         public ActionResult UyeEkle()
         {
-            return View();
+            
+                return View();
         }
 
-        [CustomFilter]
+        
         [HttpPost]
         public ActionResult UyeEkle(User user)
         {

@@ -7,20 +7,20 @@ using System.Web.Mvc;
 
 namespace EsmesCompany.Helper
 {
-    public class CustomFilter : FilterAttribute, IActionFilter
+    public class CustomFilter : ActionFilterAttribute//, FilterAttribute, IActionFilter
     {
-        public void OnActionExecuted(ActionExecutedContext filterContext)
+        public override void OnActionExecuted(ActionExecutedContext filterContext)
         {
-            throw new NotImplementedException();
+            base.OnActionExecuted(filterContext);
         }
 
-        public void OnActionExecuting(ActionExecutingContext filterContext)
+        public override void OnActionExecuting(ActionExecutingContext filterContext)
         {
-            HttpContextWrapper wrap = new HttpContextWrapper(HttpContext.Current);
-            if (filterContext.HttpContext.Request.Cookies["Username"] == null || String.IsNullOrEmpty(filterContext.HttpContext.Request.Cookies["Username"].Value))
+            if (filterContext.HttpContext.Session["Username"] == null)
             {
-                filterContext.Result = new RedirectToRouteResult(new RouteValueDictionary { { "controller", "Admin" }, { "action", "Login" } });
+                filterContext.Result = new RedirectResult("~/Admin/Login");
             }
+            base.OnActionExecuting(filterContext);
         }
     }
 }
