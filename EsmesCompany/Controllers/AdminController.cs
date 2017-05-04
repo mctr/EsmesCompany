@@ -153,7 +153,7 @@ namespace EsmesCompany.Controllers
 
         public ActionResult Delete(int id)
         {
-
+            return "foo";
         }
     }
 }
