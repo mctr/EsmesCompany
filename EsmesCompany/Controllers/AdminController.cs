@@ -37,6 +37,7 @@ namespace EsmesCompany.Controllers
                     {
                         Session["UserId"] = obj.UserId.ToString();
                         Session["Username"] = obj.Username.ToString();
+                        Session["Fullname"] = obj.Fullname.ToString();
                         return RedirectToAction("List");
                     }
                 }
@@ -148,6 +149,11 @@ namespace EsmesCompany.Controllers
             db.Entry(subs).State = EntityState.Modified;
             db.SaveChanges();
             return RedirectToAction("List");
+        }
+
+        public ActionResult Delete(int id)
+        {
+
         }
     }
 }
